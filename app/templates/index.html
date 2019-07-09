@@ -84,7 +84,51 @@
 		</div>
 	</div>
 	<script>
-	  // your solution here
+   
+    
+    $('#pan-box').hammer().on("panleft panright", function(ev){
+      $('#pan-box').html('pan detected');
+      $('#pan-box').css('background-color','red');
+      
+    });
+    
+    $('#press-box').hammer().on("press pressup", function(ev){
+      $('#press-box').html('press detected');
+      $('#press-box').css('background-color','black');
+
+    });
+    
+    $('#swipe-box').hammer().on("swipeleft swiperight", function(ev){
+      $('#swipe-box').html('swipe detected');
+      $('#swipe-box').css('background-color','pink');
+
+    });
+    
+    $('#tap-box').hammer().on("tap", function(ev){
+      $('#tap-box').html('tap detected');
+      $('#tap-box').css('background-color','yellow');
+
+    });
+    
+    var element = document.getElementById('rotate-box');
+    var manager = new Hammer.Manager(element);
+    var rotate = new Hammer.Rotate();
+    manager.add(rotate);
+    manager.on("rotate",function (ep) {
+      element.textContent = "rotate detected";
+      element.style.background = "gold";
+    });
+    
+    var ele = document.getElementById('pinch-box');
+    var manage = new Hammer.Manager(ele);
+    var pinch = new Hammer.Pinch();
+    manage.add(pinch);
+    manage.on("pinch",function (ep) {
+      ele.textContent = "pinch detected";
+      ele.style.background = "orange";
+    });
+   
+    
   </script>
 </body>
 </html>
